@@ -20,7 +20,8 @@ jobs:
         with:
           report_path: junit.xml
           test_runner: jest
-        if: always()
+        if: always() && env.LAUNCHABLE_TOKEN != ''
+        continue-on-error: true
         env:
           LAUNCHABLE_TOKEN: ${{ secrets.LAUNCHABLE_TOKEN }}
 
@@ -29,3 +30,4 @@ jobs:
         with:
           name: junit.xml
           path: junit.xml
+        if: always()
